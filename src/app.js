@@ -5,8 +5,8 @@ const port = config.port
 
 const app = express();
 import Routes from './routes';
-import db from './models'
-
+import Database from './models'
+const db = new Database();
 /** Instances **/
 const { versionApi } = config;
 const routes = new Routes(express,db,null);
@@ -15,7 +15,6 @@ const router = express.Router()
 app.use(morgan('dev'))
 
 /** Routes **/
-console.log(routes.User)
 router.use('/users', routes.User);
 app.use(versionApi, router)
 app.listen(port, () => {});
