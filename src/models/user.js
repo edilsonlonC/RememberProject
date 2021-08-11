@@ -11,7 +11,7 @@ export default (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Language, { foreignKey: 'userId' });
       User.hasMany(models.Sentence, { foreignKey: 'userId' });
-      User.hasMany(models.Session, { foreignKey: 'userId' });
+      User.hasMany(models.Session, { foreignKey: 'usrId' });
     }
   }
   User.init(
