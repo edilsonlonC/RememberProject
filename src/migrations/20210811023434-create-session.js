@@ -1,28 +1,20 @@
 export default {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('sessions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      email: {
-        type: Sequelize.STRING,
-        unique: true,
-      },
-      userName: {
-        type: Sequelize.STRING,
-        unique: true,
-      },
-      blocked: {
-        type: Sequelize.BOOLEAN,
-      },
-      password: {
+      token: {
         type: Sequelize.STRING(512),
       },
-      resetTokenPassword: {
-        type: Sequelize.STRING(512),
+      ip: {
+        type: Sequelize.STRING,
+      },
+      lastAction: {
+        type: Sequelize.DATE,
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +27,6 @@ export default {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('sessions');
   },
 };

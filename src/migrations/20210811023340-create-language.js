@@ -1,28 +1,17 @@
 export default {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('languages', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      email: {
+      name: {
         type: Sequelize.STRING,
-        unique: true,
       },
-      userName: {
+      description: {
         type: Sequelize.STRING,
-        unique: true,
-      },
-      blocked: {
-        type: Sequelize.BOOLEAN,
-      },
-      password: {
-        type: Sequelize.STRING(512),
-      },
-      resetTokenPassword: {
-        type: Sequelize.STRING(512),
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +24,6 @@ export default {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('languages');
   },
 };
