@@ -1,6 +1,7 @@
 import { Model } from 'sequelize';
 import bcrypt from 'bcrypt';
-import { config } from '../config/config'
+import { config } from '../config/config';
+
 export default (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -20,16 +21,15 @@ export default (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       userName: DataTypes.STRING,
       blocked: DataTypes.BOOLEAN,
-			password: {
-				type: DataTypes.STRING(512),
-				set(value) {
-					this.setDataValue(
-						'password',
-						bcrypt.hashSync(value,config.saltRound)
-					)
-
-				}
-			},
+      password: {
+        type: DataTypes.STRING(512),
+        set(value) {
+          this.setDataValue(
+            'password',
+            bcrypt.hashSync(value, config.saltRound)
+          );
+        },
+      },
       resetTokenPassword: DataTypes.STRING(512),
     },
     {
@@ -37,10 +37,10 @@ export default (sequelize, DataTypes) => {
       tableName: 'users',
       modelName: 'User',
     }
-	);
+  );
 
-	User.prototype.comparePassword = function (password){
-		return bcrypt.compareSync(password, this.password)
-	}
+  User.prototype.comparePassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+  };
   return User;
 };
