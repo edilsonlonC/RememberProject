@@ -1,8 +1,10 @@
 import User from './user';
+import Sentence from './sentence';
 
 export default function (app, db, services = null) {
   this.routes = {
     User,
+    Sentence,
   };
   this.associate = function () {
     const names = Object.keys(this.routes);

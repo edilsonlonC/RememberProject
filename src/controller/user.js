@@ -20,7 +20,7 @@ export default function (services, db) {
           req
         )({
           data: null,
-          message: 'user.created',
+          message: req.translate('user.created'),
         });
       } catch (e) {
         return response(
