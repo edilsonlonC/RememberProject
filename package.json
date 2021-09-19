@@ -4,7 +4,7 @@
   "description": "Structure for crm Tool",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack --config webpack.config.js",
     "start": "babel-node src/app.js",
     "dev": "nodemon --exec babel-node src/app.js",
