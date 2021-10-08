@@ -40,6 +40,7 @@ export default function (services, db) {
       try {
         const filters = ['sentence', 'userId', 'id', 'name'];
         const filtersValidated = req.filterData(Filter, filters);
+        throw Error('test error')
         const queryBuilder = {
           where: filtersValidated,
         };
@@ -51,14 +52,8 @@ export default function (services, db) {
           data: { Sentences: sentences },
           message: req.translate('senteces.list'),
         });
-      } catch (e) {
-        return response(
-          res,
-          req
-        )({
-          data: null,
-          error: new ResponseError(500, 'server.error', e, { log: true }),
-        });
+      } catch (error) {
+        return next(error)      
       }
     },
     sentenceUpdate: async (req, res, next) => {
@@ -75,14 +70,8 @@ export default function (services, db) {
           message: req.translate('sentence.updated'),
           data: null,
         });
-      } catch (e) {
-        return response(
-          res,
-          req
-        )({
-          data: null,
-          error: new ResponseError(500, 'server.error', e, { log: true }),
-        });
+      } catch (error) {
+        return next(error)      
       }
     },
   };

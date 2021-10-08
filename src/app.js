@@ -5,7 +5,8 @@ import Routes from './routes';
 import Database from './models';
 import langs from './middlewares/langs';
 import filterData from './middlewares/check-filters';
-
+import _404 from './middlewares/_404';
+import error from './middlewares/error';
 const { port } = config;
 
 /** Instances * */
@@ -26,5 +27,8 @@ router.use('/users', routes.User);
 router.use('/sentences', routes.Sentence);
 router.use('/languages', routes.Language);
 app.use(versionApi, router);
+
+app.use(_404);
+app.use(error)
 app.listen(port, () => {});
 export default app;

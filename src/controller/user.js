@@ -22,14 +22,8 @@ export default function (services, db) {
           data: null,
           message: req.translate('user.created'),
         });
-      } catch (e) {
-        return response(
-          res,
-          req
-        )({
-          data: null,
-          error: new ResposeError(500, 'server.error', e, { log: true }),
-        });
+      } catch (error) {
+        return next(error) 
       }
     },
   };

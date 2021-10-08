@@ -18,13 +18,7 @@ export default function (db, services) {
           message: 'Language.create',
         });
       } catch (error) {
-        return response(
-          res,
-          req
-        )({
-          data: null,
-          error: new ResponseError(500, 'server.error', error),
-        });
+        return  next(error)
       }
     },
     list: async (req, res, next) => {
@@ -38,13 +32,7 @@ export default function (db, services) {
           data: { Languages: languages },
         });
       } catch (error) {
-        return response(
-          res,
-          req
-        )({
-          data: null,
-          error: new ResponseError(500, 'server.error', error),
-        });
+       return next(e) 
       }
     },
   };
