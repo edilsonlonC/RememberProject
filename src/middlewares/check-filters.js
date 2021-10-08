@@ -5,6 +5,7 @@ export default () => {
      * @param { array } filters - name of filters to validate
      * */
     const filterData = (filter, filters) => {
+      if (!filter) return {};
       const filterValues = Object.keys(filter);
       const filterValidated = filterValues.reduce((previous, current) => {
         if (filters.includes(current)) previous[current] = filter[current];

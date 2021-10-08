@@ -9,27 +9,27 @@ export default function (services, db) {
         const {
           body: { data },
         } = req;
-        const sentenceToSave = {
-          name: data.name,
-          sentence: data.sentence,
-          description: data.description,
-          userId: data.userId,
-        };
+        const sentenceToSave = req.filterData(data, [
+          'name',
+          'sentence',
+          'description',
+          'userId',
+        ]);
         const sentence = await Sentence.create(sentenceToSave);
         return response(
           res,
           req
         )({
-          data: null,
+          data: { Sentence: sentence },
           message: req.translate('sentence.created'),
         });
-      } catch (e) {
+      } catch (error) {
         return response(
           res,
           req
         )({
           data: null,
-          error: new ResponseError(500, 'server.error', e, { log: true }),
+          error: new ResponseError(500, 'server.error', error),
         });
       }
     },
@@ -66,8 +66,8 @@ export default function (services, db) {
       try {
         const { id } = data;
         const dataToUpdate = ['sentence', 'name'];
-        const FilteredData = req.filterData(data);
-        await Sentence.update(dataToUpdate, { where: { id } });
+        const FilteredData = req.filterData(data, dataToUpdate);
+        await Sentence.update(FilteredData, { where: { id } });
         return response(
           res,
           req

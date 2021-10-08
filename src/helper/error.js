@@ -1,12 +1,12 @@
 const env = process.env.NODE_ENV || 'development';
 
-export default function (statusCode, message, error, { log }) {
+export default function (statusCode, message, error) {
   Error.call(this);
-  this.log = log || false;
   this.code = statusCode;
   this.message = message;
+  console.log(this.message);
   this.logging = function () {
     if (env === 'development') console.log(error);
   };
-  if (log) this.logging();
+  this.logging();
 }

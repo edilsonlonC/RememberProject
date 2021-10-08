@@ -24,6 +24,7 @@ app.use(filterData());
 /** Routes * */
 router.use('/users', routes.User);
 router.use('/sentences', routes.Sentence);
+router.use('/languages', routes.Language);
 app.use(versionApi, router);
 app.listen(port, () => {});
 export default app;
