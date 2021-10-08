@@ -7,6 +7,7 @@ import langs from './middlewares/langs';
 import filterData from './middlewares/check-filters';
 import _404 from './middlewares/_404';
 import error from './middlewares/error';
+import helmet from 'helmet'
 
 const { port } = config;
 
@@ -21,8 +22,9 @@ const router = express.Router();
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(langs());
+app.use(helmet());
 app.use(filterData());
-
+app.disable('x-powered-by')
 /** Routes * */
 router.use('/users', routes.User);
 router.use('/sentences', routes.Sentence);
