@@ -21,7 +21,7 @@ export default function (db, services) {
             error: new responseError('not.authorized'),
           });
       } catch (error) {
-        return next(error) 
+        return next(error);
       }
     },
     checkAuth: async (req, res, next) => {},

@@ -18,7 +18,7 @@ export default function (db, services) {
           message: 'Language.create',
         });
       } catch (error) {
-        return  next(error)
+        return next(error);
       }
     },
     list: async (req, res, next) => {
@@ -32,7 +32,7 @@ export default function (db, services) {
           data: { Languages: languages },
         });
       } catch (error) {
-       return next(e) 
+        return next(e);
       }
     },
   };

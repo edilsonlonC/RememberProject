@@ -23,7 +23,7 @@ export default function (services, db) {
           message: req.translate('user.created'),
         });
       } catch (error) {
-        return next(error) 
+        return next(error);
       }
     },
   };

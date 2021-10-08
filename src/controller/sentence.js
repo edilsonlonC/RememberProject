@@ -40,7 +40,6 @@ export default function (services, db) {
       try {
         const filters = ['sentence', 'userId', 'id', 'name'];
         const filtersValidated = req.filterData(Filter, filters);
-        throw Error('test error')
         const queryBuilder = {
           where: filtersValidated,
         };
@@ -53,7 +52,7 @@ export default function (services, db) {
           message: req.translate('senteces.list'),
         });
       } catch (error) {
-        return next(error)      
+        return next(error);
       }
     },
     sentenceUpdate: async (req, res, next) => {
@@ -71,7 +70,7 @@ export default function (services, db) {
           data: null,
         });
       } catch (error) {
-        return next(error)      
+        return next(error);
       }
     },
   };
