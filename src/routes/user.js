@@ -1,4 +1,4 @@
-import controllerUser from '../controller/user';
+import controllerUser from '../controller/user/user';
 import validatorUser from '../validators/user';
 
 export default function (app, db, services) {

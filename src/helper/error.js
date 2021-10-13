@@ -4,9 +4,8 @@ export default function (statusCode, message, error) {
   Error.call(this);
   this.code = statusCode;
   this.message = message;
-  console.log(this.message);
   this.logging = function () {
-    if (env === 'development') console.log(error);
+    if (env === 'development') return error;
   };
   this.logging();
 }

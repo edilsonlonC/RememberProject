@@ -1,4 +1,4 @@
-import controllerSentence from '../controller/sentence';
+import controllerSentence from '../controller/sentence/sentence';
 
 export default function (app, db, services) {
   const sentenceController = controllerSentence(services, db);

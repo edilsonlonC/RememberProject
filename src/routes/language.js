@@ -1,4 +1,4 @@
-import controller from '../controller/language';
+import controller from '../controller/language/language';
 
 export default function (app, db, services) {
   const router = app.Router();

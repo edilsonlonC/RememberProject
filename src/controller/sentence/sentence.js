@@ -1,5 +1,4 @@
-import response from '../helper/response';
-import ResponseError from '../helper/error';
+import response from '../../helper/response';
 
 export default function (services, db) {
   const { Sentence } = db;
@@ -24,19 +23,11 @@ export default function (services, db) {
           message: req.translate('sentence.created'),
         });
       } catch (error) {
-        return response(
-          res,
-          req
-        )({
-          data: null,
-          error: new ResponseError(500, 'server.error', error),
-        });
+        next(error)      
       }
     },
     sentenceList: async (req, res, next) => {
-      const {
-        data: { Filter },
-      } = req.body;
+     const Filter = req.body.data?.Filter 
       try {
         const filters = ['sentence', 'userId', 'id', 'name'];
         const filtersValidated = req.filterData(Filter, filters);

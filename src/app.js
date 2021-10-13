@@ -14,7 +14,8 @@ const { port } = config;
 /** Instances * */
 
 const app = express();
-const db = new Database();
+const db = new Database().db;
+console.log(db)
 const { versionApi } = config;
 const routes = new Routes(express, db, null);
 const router = express.Router();

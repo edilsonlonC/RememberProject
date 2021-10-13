@@ -1,5 +1,4 @@
-import response from '../helper/response';
-import ResponseError from '../helper/error';
+import response from '../../helper/response';
 
 export default function (db, services) {
   const { Language } = db;
