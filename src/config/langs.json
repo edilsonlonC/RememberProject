@@ -2,6 +2,11 @@
 	"server.error": {
 		"en": "Unexpected error",
 		"es": "Error inespereado"
+	},
+	"resource.NotFound": {
+		"es": "Recurso no encontrado",
+		"en": "Not Found resource"
 	}
+
 		
 }
